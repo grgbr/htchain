@@ -7,7 +7,7 @@ isl_dist_sum  := 81ac6b404a71e146bb705efe647ecf3bee19c3254f534cb44228cec13ffc7a3
 isl_dist_name := $(notdir $(isl_dist_url))
 isl_vers      := $(patsubst isl-%.tar.xz,%,$(isl_dist_name))
 isl_brief     := Manipulating sets and relations of integer points bounded by linear constraints
-isl_home      := http://isl.gforge.inria.fr/
+isl_home      := http://libisl.sourceforge.io/
 
 define isl_desc
 isl is a library for manipulating sets and relations of integer points bounded
