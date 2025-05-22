@@ -22,4 +22,6 @@ DEBSRCDEPS := lsb-release \
               latexmk texlive-latex-extra texlive-font-utils \
               desktop-file-utils
 
+DEBDOCKERDEPS := bash-completion
+
 DOCKIMG    := debian:buster-slim

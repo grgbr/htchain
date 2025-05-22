@@ -552,7 +552,7 @@ $(OUTDIR)/$(DEBDIST)/stamp/docker-ready: $(TOPDIR)/Dockerfile \
 	       --file '$(<)' \
 	       --tag 'htchain:$(DEBDIST)' \
 		   --build-arg DOCKIMG="$(if $(DOCKERREGISTRY),$(DOCKERREGISTRY)/)$(DOCKIMG)" \
-		   --build-arg DEBSRCDEPS="$(DEBSRCDEPS)" \
+		   --build-arg DEBSRCDEPS="$(DEBSRCDEPS) $(DEBDOCKERDEPS)" \
 		   --build-arg HTCHAIN_UID="$(shell id -u)" \
 		   --build-arg HTCHAIN_USER="$(shell id -un)" \
 		   --build-arg HTCHAIN_GID="$(shell id -g)" \
