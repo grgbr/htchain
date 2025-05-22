@@ -564,6 +564,12 @@ $(OUTDIR)/$(DEBDIST)/stamp/docker-ready: $(TOPDIR)/Dockerfile \
 $(OUTDIR)/$(DEBDIST)/build $(OUTDIR)/$(DEBDIST)/stamp:
 	$(call mkdir,$(@))
 
+.PHONY: clobber-docker
+clobber-docker:
+	$(Q)docker image rm --force 'htchain:$(DEBDIST)'
+	$(Q)docker builder prune --force
+	$(call rmf, $(OUTDIR)/$(DEBDIST)/stamp/docker-ready)
+
 .PHONY: shell
 shell: $(OUTDIR)/$(DEBDIST)/stamp/docker-ready
 	$(call dock_run_cmd,$(DEBDIST))
@@ -572,7 +578,7 @@ shell: $(OUTDIR)/$(DEBDIST)/stamp/docker-ready
 test-deps: $(OUTDIR)/$(DEBDIST)/stamp/docker-ready
 	$(call dock_run_cmd,$(DEBDIST),$(TOPDIR)/scripts/test_deps.sh)
 
-_goals := $(filter-out $(OUTDIR)% $(TOPDIR)% shell test-deps,$(MAKECMDGOALS))
+_goals := $(filter-out $(OUTDIR)% $(TOPDIR)% clobber-docker shell test-deps,$(MAKECMDGOALS))
 ifeq ($(_goals),)
 	_goals := all
 endif
