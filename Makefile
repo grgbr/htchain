@@ -548,7 +548,7 @@ endef
 $(OUTDIR)/$(DEBDIST)/stamp/docker-ready: $(TOPDIR)/Dockerfile \
                                          $(TOPDIR)/debian/$(DEBDIST).mk \
                                          | $(OUTDIR)/$(DEBDIST)/stamp
-	docker build \
+	$(Q)docker $(if $(V),--debug) build \
 	       --file '$(<)' \
 	       --tag 'htchain:$(DEBDIST)' \
 		   --build-arg DOCKIMG="$(DOCKIMG)" \
