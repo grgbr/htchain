@@ -11,6 +11,10 @@ zlib_dist_name := $(notdir $(zlib_dist_url))
 zlib_vers      := $(patsubst zlib-%.tar.xz,%,$(zlib_dist_name))
 zlib_brief     := ZLib compression library
 zlib_home      := http://zlib.net/
+define zlib_patches
+# $(call patch,$(srcdir)/zlib,$(PATCHDIR)/zlib-1.2.13-000-fix_config_gcc.patch,-p1)
+# $(call patch,$(srcdir)/zlib,$(PATCHDIR)/zlib-1.2.13-001-fix_shared_test_build_flags.patch,-p1)
+endef
 
 define zlib_desc
 Zlib is a library implementing the deflate compression method found in ``gzip``
@@ -27,10 +31,7 @@ $(call gen_fetch_rules,zlib,zlib_dist_name,fetch_zlib_dist)
 define xtract_zlib
 $(call rmrf,$(srcdir)/zlib)
 $(call untar,$(srcdir)/zlib,$(FETCHDIR)/$(zlib_dist_name),--strip-components=1)
-cd $(srcdir)/zlib && \
-patch -p1 < $(PATCHDIR)/zlib-1.2.13-000-fix_config_gcc.patch
-cd $(srcdir)/zlib && \
-patch -p1 < $(PATCHDIR)/zlib-1.2.13-001-fix_shared_test_build_flags.patch
+$(zlib_patches)
 endef
 $(call gen_xtract_rules,zlib,xtract_zlib)
 
