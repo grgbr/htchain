@@ -6,13 +6,16 @@
 # * make depend onto Berkeley DB
 ################################################################################
 
-perl_dist_url  := https://www.cpan.org/src/5.0/perl-5.36.0.tar.gz
-perl_dist_sum  := 76f2dbc764443c66bc3bfcc214a7c851f155de75b0f94a2923e10caa6ec9b8fd5aaafcfa65964cd3584eb7a6e4fea766abb5e0e840c5ae4237587ee047cd82dd
+perl_dist_url  := https://www.cpan.org/src/5.0/perl-5.40.2.tar.gz
+perl_dist_sum  := 78a186f6511e672ebac4c4627c446d3faaeab05fd6b190a7056b8e674eea33762bf1dc7ac9d695f9959366c34ecdc4c49030d7dad29ff42d1a53ce7c5d558d10
 perl_dist_name := $(notdir $(perl_dist_url))
 perl_vers      := $(patsubst perl-%.tar.gz,%,$(perl_dist_name))
 perl_vers_maj  := $(word 1,$(subst .,$(space),$(perl_vers)))
 perl_brief     := Larry Wall\'s Practical Extraction and Report Language
 perl_home      := http://dev.perl.org/
+define perl_patches
+#$(call patch,$(srcdir)/perl,$(PATCHDIR)/perl-5.36.0-000-fix_libperl_test_config_nm.patch,-p1)
+endef
 
 define perl_desc
 Perl is a highly capable, feature-rich programming language with over 20 years
@@ -38,8 +41,7 @@ $(call gen_fetch_rules,perl,perl_dist_name,fetch_perl_dist)
 define xtract_perl
 $(call rmrf,$(srcdir)/perl)
 $(call untar,$(srcdir)/perl,$(FETCHDIR)/$(perl_dist_name),--strip-components=1)
-cd $(srcdir)/perl && \
-patch -p1 < $(PATCHDIR)/perl-5.36.0-000-fix_libperl_test_config_nm.patch
+$(perl_patches)
 endef
 $(call gen_xtract_rules,perl,xtract_perl)
 

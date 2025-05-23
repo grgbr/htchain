@@ -2,8 +2,8 @@
 # expat modules
 ################################################################################
 
-expat_dist_url  := https://github.com/libexpat/libexpat/releases/download/R_2_4_8/expat-2.4.8.tar.bz2
-expat_dist_sum  := 46cc9d725f359b77681a2875bfefa15ceee50eb9513f6577607c0c5833dfa4241565c74f26b84b38d802c3cd8c32f00204fd74272bcecbd21229425764eef86c
+expat_dist_url  := https://github.com/libexpat/libexpat/releases/download/R_2_7_1/expat-2.7.1.tar.bz2
+expat_dist_sum  := ea78781ca03367a014afc1bb37c2306883b6f666d7cd90dc84a39c4abc6b7ec261636b8668540aa286c708a41dd02baae8249dc4391306da56431700460a0f23
 expat_dist_name := $(notdir $(expat_dist_url))
 expat_vers      := $(patsubst expat-%.tar.bz2,%,$(expat_dist_name))
 expat_brief     := XML parsing C library

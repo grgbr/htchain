@@ -2,8 +2,8 @@
 # util-linux modules
 ################################################################################
 
-util-linux_dist_url  := https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.38/util-linux-2.38.tar.xz
-util-linux_dist_sum  := d0f7888f457592067938e216695871ce6475a45d83a092cc3fd72b8cf8fca145ca5f3a99122f1744ef60b4f773055cf4e178dc6c59cd30837172aee0b5597e8c
+util-linux_dist_url  := https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.41/util-linux-2.41.tar.xz
+util-linux_dist_sum  := 58be27a08cc875d1a5f4dbdfeef1d4c3e2d728ac53f94b747fcc4b1454e261c0e26b367ef2649bbad40ca569d7fa6805e47e0e571b66465d6a7647799e2d0af0
 util-linux_dist_name := $(notdir $(util-linux_dist_url))
 util-linux_vers      := $(patsubst util-linux-%.tar.xz,%,$(util-linux_dist_name))
 util-linux_brief     := Miscellaneous Linux system utilities

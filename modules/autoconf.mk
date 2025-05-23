@@ -2,8 +2,8 @@
 # autoconf modules
 ################################################################################
 
-autoconf_dist_url  := https://ftp.gnu.org/gnu/autoconf/autoconf-2.71.tar.xz
-autoconf_dist_sum  := 73d32b4adcbe24e3bafa9f43f59ed3b6efbd3de0f194e5ec90375f35da1199c583f5d3e89139b7edbad35171403709270e339ffa56a2ecb9b3123e9285021ff0
+autoconf_dist_url  := https://ftp.gnu.org/gnu/autoconf/autoconf-2.72.tar.xz
+autoconf_dist_sum  := c4e9fbd858666d3e5c3b4fe7f89aa3e8e3a0a00dc7e166f8147d937d911b77ba3ac6a016f9d223ccdd830bc8960b3e60397c0607cc6a1fd2c50c7492839ddd17
 autoconf_dist_name := $(notdir $(autoconf_dist_url))
 autoconf_vers      := $(patsubst autoconf-%.tar.xz,%,$(autoconf_dist_name))
 autoconf_brief     := Automatic configure script builder

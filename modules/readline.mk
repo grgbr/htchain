@@ -4,8 +4,8 @@
 # AFAIK, there is no automatic unit testing logic provided with readline.
 ################################################################################
 
-readline_dist_url  := https://ftp.gnu.org/gnu/readline/readline-8.1.2.tar.gz
-readline_dist_sum  := b512275c8aa8b3b3178366c6d681f867676fc1c881e375134a88e9c860a448535e04ca43df727817fd0048261e48203e88bd1c086e86572022d1d65fb0350e4d
+readline_dist_url  := https://ftp.gnu.org/gnu/readline/readline-8.2.tar.gz
+readline_dist_sum  := 0a451d459146bfdeecc9cdd94bda6a6416d3e93abd80885a40b334312f16eb890f8618a27ca26868cebbddf1224983e631b1cbc002c1a4d1cd0d65fba9fea49a
 readline_dist_name := $(notdir $(readline_dist_url))
 readline_vers      := $(patsubst readline-%.tar.gz,%,$(readline_dist_name))
 readline_brief     := GNU readline and history libraries

@@ -7,8 +7,8 @@
 #       (required by bash)
 ################################################################################
 
-ncurses_dist_url  := https://ftp.gnu.org/gnu/ncurses/ncurses-6.3.tar.gz
-ncurses_dist_sum  := 5373f228cba6b7869210384a607a2d7faecfcbfef6dbfcd7c513f4e84fbd8bcad53ac7db2e7e84b95582248c1039dcfc7c4db205a618f7da22a166db482f0105
+ncurses_dist_url  := https://ftp.gnu.org/gnu/ncurses/ncurses-6.5.tar.gz
+ncurses_dist_sum  := fc5a13409d2a530a1325776dcce3a99127ddc2c03999cfeb0065d0eee2d68456274fb1c7b3cc99c1937bc657d0e7fca97016e147f93c7821b5a4a6837db821e8
 ncurses_dist_name := $(notdir $(ncurses_dist_url))
 ncurses_vers      := $(patsubst ncurses-%.tar.gz,%,$(ncurses_dist_name))
 ncurses_brief     := Terminal-independent handling of character screens

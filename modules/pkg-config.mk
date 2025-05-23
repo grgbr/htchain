@@ -2,8 +2,8 @@
 # pkg-config modules
 ################################################################################
 
-pkg-config_dist_url  := https://pkgconfig.freedesktop.org/releases/pkg-config-0.29.tar.gz
-pkg-config_dist_sum  := c2857cd67801c0db5d204912453ff6bdc7da3ea61f8b1c6b38983d48dffb958725e7723f909abbc057c7b34a85c27290eec6943808312a75909306076064aa63
+pkg-config_dist_url  := https://pkgconfig.freedesktop.org/releases/pkg-config-0.29.2.tar.gz
+pkg-config_dist_sum  := 4861ec6428fead416f5cbbbb0bbad10b9152967e481d4b0ff2eb396a9f297f552984c9bb72f6864a37dcd8fca1d9ccceda3ef18d8f121938dbe4fdf2b870fe75
 pkg-config_dist_name := $(notdir $(pkg-config_dist_url))
 pkg-config_vers      := $(patsubst pkg-config-%.tar.gz,%,$(pkg-config_dist_name))
 pkg-config_brief     := Manage compile and link flags for libraries

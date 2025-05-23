@@ -2,8 +2,8 @@
 # gdbm modules
 ################################################################################
 
-gdbm_dist_url  := https://ftp.gnu.org/gnu/gdbm/gdbm-1.23.tar.gz
-gdbm_dist_sum  := 918080cb0225b221c11eb7339634a95e00c526072395f7a3d46ccf42ef020dea7c4c5bec34aff2c4f16033e1fff6583252b7e978f68b8d7f8736b0e025838e10
+gdbm_dist_url  := https://ftp.gnu.org/gnu/gdbm/gdbm-1.25.tar.gz
+gdbm_dist_sum  := 1785598665d7323eed052a55708903c6abaeafcfb66a9ceb69293f57c3fdbf49cd8a821ef23715a40bf7030d0067d1340d12279ed07afe040f912e53078e47f5
 gdbm_dist_name := $(notdir $(gdbm_dist_url))
 gdbm_vers      := $(patsubst gdbm-%.tar.gz,%,$(gdbm_dist_name))
 gdbm_brief     := GNU dbm database routines

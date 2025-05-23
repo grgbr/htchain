@@ -5,8 +5,8 @@
 # * fix failing tests: test_asyncio test_asyncio test_socket
 ################################################################################
 
-python_dist_url   := https://www.python.org/ftp/python/3.10.11/Python-3.10.11.tar.xz
-python_dist_sum   := fa113b4b635d271a1412999587ec64654d337db263851a6a9d88b3cab4ed66dba76fe03e65c4d341f0a83fd8182d35e245bfd9827465d7aebcb4deb71af4d047
+python_dist_url   := https://www.python.org/ftp/python/3.12.10/Python-3.12.10.tar.xz
+python_dist_sum   := 520c30e3958d0be3c127e5dbb1c52bb3bfc404b5b3c7eb56525e25b9b59af9b21b53bee192f323f470e1df806f6cb2dd3411eb90cbc1c4b7d9b6b0777c29e644
 python_dist_name  := $(subst P,p,$(notdir $(python_dist_url)))
 python_vers       := $(patsubst python-%.tar.xz,%,$(python_dist_name))
 _python_vers_toks := $(subst .,$(space),$(python_vers))
@@ -14,6 +14,9 @@ python_vers_maj   := $(word 1,$(_python_vers_toks))
 python_vers_min   := $(word 2,$(_python_vers_toks))
 python_brief      := Interactive high-level object-oriented language
 python_home       := http://www.python.org/
+define python_patches
+#$(call patch,$(srcdir)/python,$(PATCHDIR)/python-3.10.4-000-ensurepip_force_modules_install.patch,-p1)
+endef
 
 define python_desc
 Python, the high-level, interactive object oriented language, includes an
@@ -33,8 +36,7 @@ $(call rmrf,$(srcdir)/python)
 $(call untar,$(srcdir)/python,\
              $(FETCHDIR)/$(python_dist_name),\
              --strip-components=1)
-cd $(srcdir)/python && \
-	patch -p1 < $(PATCHDIR)/python-3.10.4-000-ensurepip_force_modules_install.patch
+$(python_patches)
 endef
 $(call gen_xtract_rules,python,xtract_python)
 

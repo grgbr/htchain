@@ -2,12 +2,15 @@
 # libmpdec modules
 ################################################################################
 
-libmpdec_dist_url  := https://www.bytereef.org/software/mpdecimal/releases/mpdecimal-2.5.1.tar.gz
-libmpdec_dist_sum  := 710cb5cb71dbcf3e170ca15869c148df0547b848400c6b6dd70c67d9961dbe1190af8fb4d1623bfb0ca2afe44f369a42e311ab5225ed89d4031cb49a3bd70f30
+libmpdec_dist_url  := https://www.bytereef.org/software/mpdecimal/releases/mpdecimal-4.0.1.tar.gz
+libmpdec_dist_sum  := 431fa8ab90d6b8cdecc38b1618fd89d040185dec3c1150203e20f40f10a16160058f6b8abddd000f6ecb74f4dc42d9fef8111444f1496ab34c34f6b814ed32b7
 libmpdec_dist_name := $(subst mpdecimal,libmpdec,$(notdir $(libmpdec_dist_url)))
 libmpdec_vers      := $(patsubst libmpdec-%.tar.gz,%,$(libmpdec_dist_name))
 libmpdec_brief     := Library for decimal floating point arithmetic
 libmpdec_home      := https://www.bytereef.org/mpdecimal/index.html
+define libmpdec_patches
+#$(call patch,$(srcdir)/libmpdec,$(PATCHDIR)/libmpdec-2.5.1-000-fix_runtest_lib_path.patch,-p1)
+endef
 
 define libmpdec_desc
 mpdecimal is a package for correctly-rounded arbitrary precision decimal
@@ -42,8 +45,7 @@ $(call untar,$(srcdir)/libmpdec,\
 $(call mkdir,$(srcdir)/libmpdec/tests/testdata)
 $(UNZIP) -d $(srcdir)/libmpdec/tests/testdata \
          $(FETCHDIR)/$(libmpdec_test_dist_name)
-cd $(srcdir)/libmpdec && \
-patch -p1 < $(PATCHDIR)/libmpdec-2.5.1-000-fix_runtest_lib_path.patch
+$(libmpdec_patches)
 endef
 $(call gen_xtract_rules,libmpdec,xtract_libmpdec)
 

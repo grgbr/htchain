@@ -4,8 +4,8 @@
 # !Warning! TCL test suites requires IPv6 support enabled to complete.
 ################################################################################
 
-tcl_dist_url  := https://prdownloads.sourceforge.net/tcl/tcl8.6.12-src.tar.gz
-tcl_dist_sum  := 15def824484309fff6831b436e33d91ab1c6b095178f427d1f58b9a04e5e676b18dfdf1d225c6ab9ec15dc233358c40789edc7daf91c5908a1837e9f337feb60
+tcl_dist_url  := https://prdownloads.sourceforge.net/tcl/tcl9.0.1-src.tar.gz
+tcl_dist_sum  := 8ef8289bd86b4cc2597d63f4b460fa4a67da66dbb1bafa29cb8cd960867d07636f12713ecb1a95a96bd6c284b6f0f4264ff96da2feeb52a5a9795f036fa346c3
 tcl_vers      := $(patsubst tcl%-src.tar.gz,%,$(notdir $(tcl_dist_url)))
 tcl_vers_toks := $(subst .,$(space),$(tcl_vers))
 tcl_vers_maj  := $(word 1,$(tcl_vers_toks))
@@ -13,6 +13,11 @@ tcl_vers_min  := $(word 2,$(tcl_vers_toks))
 tcl_dist_name := tcl-$(tcl_vers).tar.gz
 tcl_brief     := Tcl, the Tool Command Language
 tcl_home      := http://www.tcl.tk/
+define tcl_patches
+# $(call patch,$(srcdir)/tcl,$(PATCHDIR)/tcl-8.6.12-000-skip_auto_path_prefix_dir.patch,-p1)
+# $(call patch,$(srcdir)/tcl,$(PATCHDIR)/tcl-8.6.12-001-fix_fcmd_test_home_dir.patch,-p1)
+# $(call patch,$(srcdir)/tcl,$(PATCHDIR)/tcl-8.6.12-002-fix_thread_pkg_gdbm_not_found.patch,-p1)
+endef
 
 # List of packages to build shipped with TCL.
 tcl_packages  := itcl4.2.2 tdbc1.1.3 thread2.8.7 tdbcsqlite3-1.1.3
@@ -34,12 +39,7 @@ $(call rmrf,$(srcdir)/tcl)
 $(call untar,$(srcdir)/tcl,\
              $(FETCHDIR)/$(tcl_dist_name),\
              --strip-components=1)
-cd $(srcdir)/tcl && \
-patch -p1 < $(PATCHDIR)/tcl-8.6.12-000-skip_auto_path_prefix_dir.patch
-cd $(srcdir)/tcl && \
-patch -p1 < $(PATCHDIR)/tcl-8.6.12-001-fix_fcmd_test_home_dir.patch
-cd $(srcdir)/tcl && \
-patch -p1 < $(PATCHDIR)/tcl-8.6.12-002-fix_thread_pkg_gdbm_not_found.patch
+$(tcl_patches)
 endef
 $(call gen_xtract_rules,tcl,xtract_tcl)
 

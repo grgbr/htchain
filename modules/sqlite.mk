@@ -2,8 +2,8 @@
 # sqlite modules
 ################################################################################
 
-sqlite_dist_url   := https://github.com/sqlite/sqlite/archive/refs/tags/version-3.39.0.tar.gz
-sqlite_dist_sum   := a40a759c8040bc226da619906473c22c75d1c3b7fb670527e017c192a8874087128f1dc3731bfa39a9a5da3d8941e965baa5f9456ab1f79de01e508c3357cc17
+sqlite_dist_url   := https://github.com/sqlite/sqlite/archive/refs/tags/version-3.49.2.tar.gz
+sqlite_dist_sum   := 3b79d9ae8b716d7db1b3a63a32aa9d51fd16bc5b3414bf6cc00623bed74677149c63fd340cc6970618a562bf99cd959cd951c4f0ebfd3b8e31104e3b34befc42
 sqlite_vers       := $(patsubst version-%.tar.gz,%,$(notdir $(sqlite_dist_url)))
 _sqlite_vers_toks := $(subst .,$(space),$(sqlite_vers))
 sqlite_vers_maj   := $(word 1,$(_sqlite_vers_toks))
