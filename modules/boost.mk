@@ -2,8 +2,8 @@
 # boost modules
 ################################################################################
 
-boost_dist_url  := https://boostorg.jfrog.io/artifactory/main/release/1.81.0/source/boost_1_81_0.tar.bz2
-boost_dist_sum  := a04201e73da59f68fa02761b333c864a96ebaf268247b6b10cb19ed3d70ee9ad3da4c53123f2a7a4a9b9e1408793b51e1adbcc6fd09f60fecef3ca9522bb6b36
+boost_dist_url  := https://archives.boost.io/release/1.88.0/source/boost_1_88_0.tar.bz2
+boost_dist_sum  := c3a6a70e1e7d826882745ff92ac8fe7cb2a69b5974ba2275d8e130955f91163cbc4e6ccfbae19a7a92d478a8cb9de2458f73324b183596b3a2a69b1d5a75b3e9
 boost_dist_name := $(subst _,.,$(subst boost_,boost-,$(notdir $(boost_dist_url))))
 boost_vers      := $(patsubst boost_%.tar.bz2,%,$(boost_dist_name))
 boost_brief     := Boost C++ Libraries

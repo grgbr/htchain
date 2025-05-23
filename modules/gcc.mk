@@ -2,7 +2,7 @@
 # gcc modules
 ################################################################################
 
-gcc_dist_url  := https://ftpmirror.gnu.org/gnu/gcc/gcc-14.3.0/gcc-14.3.0.tar.xz
+gcc_dist_url  := https://ftp.gnu.org/gnu/gcc/gcc-14.3.0/gcc-14.3.0.tar.xz
 gcc_dist_sum  := cb4e3259640721bbd275c723fe4df53d12f9b1673afb3db274c22c6aa457865dccf2d6ea20b4fd4c591f6152e6d4b87516c402015900f06ce9d43af66d3b7a93
 gcc_dist_name := $(notdir $(gcc_dist_url))
 gcc_vers      := $(patsubst gcc-%.tar.xz,%,$(gcc_dist_name))
