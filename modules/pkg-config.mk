@@ -8,6 +8,10 @@ pkg-config_dist_name := $(notdir $(pkg-config_dist_url))
 pkg-config_vers      := $(patsubst pkg-config-%.tar.gz,%,$(pkg-config_dist_name))
 pkg-config_brief     := Manage compile and link flags for libraries
 pkg-config_home      := http://pkg-config.freedesktop.org
+define pkg-config_patches
+# $(call patch,$(srcdir)/pkg-config),$(PATCHDIR)/pkg-config-0.29-000-glib_gdate_Werror_format_nonliteral.patch,-p1)
+# $(call patch,$(srcdir)/pkg-config),$(PATCHDIR)/pkg-config-0.29-001-skip_test_list_all.patch,-p1)
+endef
 
 define pkg-config_desc
 pkg-config is a system for managing library compile and link flags that works
@@ -30,10 +34,7 @@ $(call rmrf,$(srcdir)/pkg-config)
 $(call untar,$(srcdir)/pkg-config,\
              $(FETCHDIR)/$(pkg-config_dist_name),\
              --strip-components=1)
-cd $(srcdir)/pkg-config && \
-	patch -p1 < $(PATCHDIR)/pkg-config-0.29-000-glib_gdate_Werror_format_nonliteral.patch
-cd $(srcdir)/pkg-config && \
-	patch -p1 < $(PATCHDIR)/pkg-config-0.29-001-skip_test_list_all.patch
+$(pkg-config_patches)
 endef
 $(call gen_xtract_rules,pkg-config,xtract_pkg-config)
 

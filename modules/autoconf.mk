@@ -8,6 +8,9 @@ autoconf_dist_name := $(notdir $(autoconf_dist_url))
 autoconf_vers      := $(patsubst autoconf-%.tar.xz,%,$(autoconf_dist_name))
 autoconf_brief     := Automatic configure script builder
 autoconf_home      := https://www.gnu.org/software/autoconf/
+define autoconf_patches
+# $(call patch,$(srcdir)/autoconf),$(PATCHDIR)/autoconf-2.71-000-fix_test_env.patch,-p1)
+endef
 
 define autoconf_desc
 The standard for FSF source packages. This is only useful if you write your own
@@ -26,8 +29,7 @@ $(call rmrf,$(srcdir)/autoconf)
 $(call untar,$(srcdir)/autoconf,\
              $(FETCHDIR)/$(autoconf_dist_name),\
              --strip-components=1)
-cd $(srcdir)/autoconf && \
-patch -p1 < $(PATCHDIR)/autoconf-2.71-000-fix_test_env.patch
+$(autoconf_patches)
 endef
 $(call gen_xtract_rules,autoconf,xtract_autoconf)
 
