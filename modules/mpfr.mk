@@ -2,8 +2,8 @@
 # mpfr modules
 ################################################################################
 
-mpfr_dist_url  := https://www.mpfr.org/mpfr-4.1.0/mpfr-4.1.0.tar.xz
-mpfr_dist_sum  := 1bd1c349741a6529dfa53af4f0da8d49254b164ece8a46928cdb13a99460285622d57fe6f68cef19c6727b3f9daa25ddb3d7d65c201c8f387e421c7f7bee6273
+mpfr_dist_url  := https://www.mpfr.org/mpfr-4.1.0/mpfr-4.1.0.tar.bz2
+mpfr_dist_sum  := 410208ee0d48474c1c10d3d4a59decd2dfa187064183b09358ec4c4666e34d74383128436b404123b831e585d81a9176b24c7ced9d913967c5fce35d4040a0b4
 mpfr_dist_name := $(notdir $(mpfr_dist_url))
 mpfr_vers      := $(patsubst mpfr-%.tar.xz,%,$(mpfr_dist_name))
 mpfr_brief     := Multiple precision floating-point computation

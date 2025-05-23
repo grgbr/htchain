@@ -2,12 +2,15 @@
 # m4 modules
 ################################################################################
 
-m4_dist_url  := https://ftp.gnu.org/gnu/m4/m4-1.4.19.tar.xz
-m4_dist_sum  := 47f595845c89709727bda0b3fc78e3188ef78ec818965b395532e7041cabe9e49677ee4aca3d042930095a7f8df81de3da1026b23b6897be471f6cf13ddd512b
+m4_dist_url  := https://ftp.gnu.org/gnu/m4/m4-1.4.20.tar.xz
+m4_dist_sum  := dc7b4f61452e564b095010029bf6ce4246e5a03959989cd76b09eb8012db7424c52819143020fab21a3471ff57ab026d3eccbd00dd3969819208980565a9fec0
 m4_dist_name := $(notdir $(m4_dist_url))
 m4_vers      := $(patsubst m4-%.tar.xz,%,$(m4_dist_name))
 m4_brief     := Macro processing language
 m4_home      := https://www.gnu.org/software/m4/
+define m4_patches
+#$(call patch,$(srcdir)/m4,$(PATCHDIR)/m4-1.4.19-000-fix_198_sysval.patch,-p1)
+endef
 
 define m4_desc
 GNU ``m4`` is an implementation of the traditional UNIX macro processor. It is
@@ -29,8 +32,7 @@ $(call rmrf,$(srcdir)/m4)
 $(call untar,$(srcdir)/m4,\
              $(FETCHDIR)/$(m4_dist_name),\
              --strip-components=1)
-cd $(srcdir)/m4 && \
-	patch -p1 < $(PATCHDIR)/m4-1.4.19-000-fix_198_sysval.patch
+$(m4_patches)
 endef
 $(call gen_xtract_rules,m4,xtract_m4)
 

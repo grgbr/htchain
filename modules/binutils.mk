@@ -2,8 +2,8 @@
 # binutils modules
 ################################################################################
 
-binutils_dist_url  := https://ftp.gnu.org/gnu/binutils/binutils-2.38.tar.lz
-binutils_dist_sum  := 99f879815e58994d2ca0fd9635ca613348828b4810787789ada70e79da2687f5418d92e26b7ebfa2c6f0304b6450181164c416b1cfd909ad039138edbf6060bf
+binutils_dist_url  := https://ftp.gnu.org/gnu/binutils/binutils-2.44.tar.lz
+binutils_dist_sum  := 87f1b5017ed2702a1af8f07f0ddd110289df56ec70643813b3e31922c01de590922ce3009f0dbc149ea4074dbe2f0927ec8ec83aeedd83734b7523a4e3221cff
 binutils_dist_name := $(notdir $(binutils_dist_url))
 binutils_vers      := $(patsubst binutils-%.tar.lz,%,$(binutils_dist_name))
 binutils_brief     := GNU assembler, linker and binary utilities

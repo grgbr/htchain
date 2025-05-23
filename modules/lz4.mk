@@ -2,8 +2,8 @@
 # lz4 modules
 ################################################################################
 
-lz4_dist_url  := https://github.com/lz4/lz4/archive/refs/tags/v1.9.3.tar.gz
-lz4_dist_sum  := c246b0bda881ee9399fa1be490fa39f43b291bb1d9db72dba8a85db1a50aad416a97e9b300eee3d2a4203c2bd88bda2762e81bc229c3aa409ad217eb306a454c
+lz4_dist_url  := https://github.com/lz4/lz4/releases/download/v1.10.0/lz4-1.10.0.tar.gz
+lz4_dist_sum  := 8c4ceb217e6dc8e7e0beba99adc736aca8963867bcf9f970d621978ba11ce92855912f8b66138037a1d2ae171e8e17beb7be99281fea840106aa60373c455b28
 lz4_vers      := $(patsubst v%.tar.gz,%,$(notdir $(lz4_dist_url)))
 lz4_dist_name := lz4-$(lz4_vers).tar.gz
 lz4_brief     := Fast LZ compression algorithm library

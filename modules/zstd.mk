@@ -2,8 +2,8 @@
 # zstd modules
 ################################################################################
 
-zstd_dist_url  := https://github.com/facebook/zstd/releases/download/v1.5.2/zstd-1.5.2.tar.gz
-zstd_dist_sum  := 96dbd2eb6623e3564a0fd36489b61bc3cb27758a584fdc9f064f3985d2e8b5605d7022890d00a6d15464d3cd0707d7e75d8cf6210323782d0af406b90a6d6784
+zstd_dist_url  := https://github.com/facebook/zstd/releases/download/v1.5.7/zstd-1.5.7.tar.gz
+zstd_dist_sum  := b4de208f179b68d4c6454139ca60d66ed3ef3893a560d6159a056640f83d3ee67cdf6ffb88971cdba35449dba4b597eaa8b4ae908127ef7fd58c89f40bf9a705
 zstd_dist_name := $(notdir $(zstd_dist_url))
 zstd_vers      := $(patsubst zstd-%.tar.gz,%,$(zstd_dist_name))
 zstd_brief     := Fast lossless compression algorithm

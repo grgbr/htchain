@@ -2,8 +2,8 @@
 # isl modules
 ################################################################################
 
-isl_dist_url  := https://libisl.sourceforge.io/isl-0.25.tar.xz
-isl_dist_sum  := 81ac6b404a71e146bb705efe647ecf3bee19c3254f534cb44228cec13ffc7a33d7d58b980106dbb120ffdc557403d966619e219328edd0a4b3cbc4ac66acb255
+isl_dist_url  := https://libisl.sourceforge.io/isl-0.24.tar.bz2
+isl_dist_sum  := aab3bddbda96b801d0f56d2869f943157aad52a6f6e6a61745edd740234c635c38231af20bc3f1a08d416a5e973a90e18249078ed8e4ae2f1d5de57658738e95
 isl_dist_name := $(notdir $(isl_dist_url))
 isl_vers      := $(patsubst isl-%.tar.xz,%,$(isl_dist_name))
 isl_brief     := Manipulating sets and relations of integer points bounded by linear constraints
@@ -90,7 +90,8 @@ endef
 isl_common_args := --enable-silent-rules \
                    --enable-static \
                    --with-gnu-ld \
-                   --with-int=gmp
+                   --with-int=gmp \
+                   --without-gcc-arch
 
 ################################################################################
 # Bootstrapping definitions

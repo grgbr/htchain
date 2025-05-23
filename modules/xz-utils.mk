@@ -2,8 +2,8 @@
 # xz-utils modules
 ################################################################################
 
-xz-utils_dist_url  := https://tukaani.org/xz/xz-5.2.5.tar.xz
-xz-utils_dist_sum  := 59266068a51cb616eb31b67cd8f07ffeb2288d1391c61665ae2ec6814465afac80fec69248f6a2f2db45b44475af001296a99af6a32287226a9c41419173ccbb
+xz-utils_dist_url  := https://github.com/tukaani-project/xz/releases/download/v5.8.1/xz-5.8.1.tar.gz
+xz-utils_dist_sum  := 151b2a47fdf00274c4fd71ceada8fb6c892bdac44070847ebf3259e602b97c95ee5ee88974e03d7aa821ab4f16d5c38e50dfb2baf660cf39c199878a666e19ad
 xz-utils_dist_name := $(subst xz-,xz-utils-,$(notdir $(xz-utils_dist_url)))
 xz-utils_vers      := $(patsubst xz-utils-%.tar.xz,%,$(xz-utils_dist_name))
 xz-utils_brief     := XZ-format compression library

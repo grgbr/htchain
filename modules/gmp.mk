@@ -2,8 +2,8 @@
 # gmp modules
 ################################################################################
 
-gmp_dist_url  := https://gmplib.org/download/gmp/gmp-6.2.1.tar.lz
-gmp_dist_sum  := 40e1c80d1a2eda0ea190ba2a27e7bfe718ee1fc685082b4f2251f108ffbec94272199b35cf6df217c9f6f10ac4132eaf3c5014a9e25db0592b94f7f1ddd4994f
+gmp_dist_url  := https://gmplib.org/download/gmp/gmp-6.2.1.tar.bz2
+gmp_dist_sum  := 8904334a3bcc5c896ececabc75cda9dec642e401fb5397c4992c4fabea5e962c9ce8bd44e8e4233c34e55c8010cc28db0545f5f750cbdbb5f00af538dc763be9
 gmp_dist_name := $(notdir $(gmp_dist_url))
 gmp_vers      := $(patsubst gmp-%.tar.lz,%,$(gmp_dist_name))
 gmp_brief     := Multiprecision arithmetic library

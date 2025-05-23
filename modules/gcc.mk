@@ -2,8 +2,8 @@
 # gcc modules
 ################################################################################
 
-gcc_dist_url  := https://ftp.gnu.org/gnu/gcc/gcc-12.3.0/gcc-12.3.0.tar.xz
-gcc_dist_sum  := 8fb799dfa2e5de5284edf8f821e3d40c2781e4c570f5adfdb1ca0671fcae3fb7f794ea783e80f01ec7bfbf912ca508e478bd749b2755c2c14e4055648146c204
+gcc_dist_url  := https://ftpmirror.gnu.org/gnu/gcc/gcc-14.2.0/gcc-14.2.0.tar.xz
+gcc_dist_sum  := 932bdef0cda94bacedf452ab17f103c0cb511ff2cec55e9112fc0328cbf1d803b42595728ea7b200e0a057c03e85626f937012e49a7515bc5dd256b2bf4bc396
 gcc_dist_name := $(notdir $(gcc_dist_url))
 gcc_vers      := $(patsubst gcc-%.tar.xz,%,$(gcc_dist_name))
 gcc_brief     := GNU compiler collection
@@ -245,6 +245,7 @@ gcc_stage_config_args := \
 	LD_FOR_TARGET='$(bstrap_ld)'
 
 gcc_stage_make_args   := \
+	PATH=$(bstrapdir)/bin:$(PATH) \
 	MAKEINFO='/bin/true' \
 	CPPFLAGS='$(stage_cppflags)' \
 	CFLAGS='$(call xclude_flags,$(lto_flags),$(stage_cflags))' \
@@ -333,6 +334,7 @@ gcc_final_config_args := \
 # make all run selftest that need libisl.so.23. This lib is in ubuntu:jammy and
 # debian but notin ubuntu:focal and early. Force ld library path to staging lib.
 gcc_final_make_args   := \
+	PATH='$(stagedir)/bin:$(PATH)' \
 	LD_LIBRARY_PATH='$(stage_lib_path)' \
 	CPPFLAGS='$(final_cppflags)' \
 	CFLAGS='$(call xclude_flags,$(lto_flags),$(final_cflags))' \
