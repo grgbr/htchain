@@ -1,19 +1,20 @@
-MKDIR   := mkdir
+CHMOD   := chmod
 CURL    := curl
+ECHOE   := /bin/echo -e
+FIND    := find
 GPG     := gpg
+INSTALL := install
+LN      := ln
+MKDIR   := mkdir
+MV      := mv
+PATCH   := patch
+RMDIR   := rmdir
+RSYNC   := rsync
+SED     := sed
+SYNC    := sync
 TAR     := tar
 TOUCH   := touch
-MV      := mv
-LN      := ln
-SYNC    := sync
-RSYNC   := rsync
-RMDIR   := rmdir
-FIND    := find
-CHMOD   := chmod
-INSTALL := install
 UNZIP   := unzip
-ECHOE   := /bin/echo -e
-SED     := sed
 
 mach_bits      := $(shell $(scriptdir)/mach_bits.sh \
                           '$(BUILD_CC) $(BUILD_CFLAGS)')
@@ -70,6 +71,10 @@ endef
 
 define mkdir
 $(MKDIR) --parents "$(strip $(1))"
+endef
+
+define patch
+$(PATCH) --directory="$(1)" $(3) --input="$(2)"
 endef
 
 define rmrf
