@@ -15,6 +15,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get --yes update
 # Somme docker minimize env by removing doc and doc tools. Force unminimize it
 # for test inside docker (like perl)
+RUN if [ -f /bin/unminimize ]; then yes | /bin/unminimize; fi
 RUN if [ -f /usr/local/sbin/unminimize ]; then yes | /usr/local/sbin/unminimize; fi
 RUN apt-get --yes install sudo util-linux make locales $DEBSRCDEPS
 RUN apt-get --yes clean
@@ -26,6 +27,8 @@ RUN umask 0337 && \
     echo '%htchain ALL=(ALL:ALL) NOPASSWD: /usr/bin/apt, /usr/bin/apt-get, /usr/bin/make' \
     > /etc/sudoers.d/htchain
 
+# Since Ubuntu:noble, docker image have "ubuntu" user.
+RUN if grep --quiet ubuntu /etc/passwd; then userdel -rf ubuntu; fi
 RUN addgroup --gid $HTCHAIN_GID $HTCHAIN_GROUP >/dev/null
 RUN adduser --uid $HTCHAIN_UID \
         --gid $HTCHAIN_GID \
