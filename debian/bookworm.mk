@@ -1,8 +1,15 @@
-# Debian 10.x (buster)
+# Debian 11.x (bullseye)
 
 DEBBINDEPS := latexmk texlive-latex-extra texlive-font-utils ca-certificates \
-              graphviz
+              graphviz libnsl2
 
+# procps: required by bmake build / check targets
+# netbase: required by perl check target
+# git: required by hatch-vcs check target
+# ca-certificates: required by distlib check target
+# latexmk: required by cmake to build documentation
+# texlive-font-utils: required by doxygen to build documentation
+# texlive-latex-extra: required by doxygen to build documentation
 DEBSRCDEPS := lsb-release \
               curl \
               file \
@@ -24,4 +31,4 @@ DEBSRCDEPS := lsb-release \
 
 DEBDOCKERDEPS := bash-completion
 
-DOCKIMG    := debian:buster-slim
+DOCKIMG    := debian:bookworm-slim

@@ -1,15 +1,8 @@
-# Debian 11.x (bullseye)
+# Ubuntu 22.04 (jammy)
 
 DEBBINDEPS := latexmk texlive-latex-extra texlive-font-utils ca-certificates \
               graphviz libnsl2
 
-# procps: required by bmake build / check targets
-# netbase: required by perl check target
-# git: required by hatch-vcs check target
-# ca-certificates: required by distlib check target
-# latexmk: required by cmake to build documentation
-# texlive-font-utils: required by doxygen to build documentation
-# texlive-latex-extra: required by doxygen to build documentation
 DEBSRCDEPS := lsb-release \
               curl \
               file \
@@ -26,9 +19,10 @@ DEBSRCDEPS := lsb-release \
               git \
               ca-certificates \
               rustc \
+              cargo \
               latexmk texlive-latex-extra texlive-font-utils \
               desktop-file-utils
 
 DEBDOCKERDEPS := bash-completion
 
-DOCKIMG    := debian:bullseye-slim
+DOCKIMG    := ubuntu:noble

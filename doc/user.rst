@@ -188,9 +188,11 @@ debian file for ubuntu jammy use the following command :
    +--------------+--------------+--------------+
    | ubuntu       | jammy        | jammy        |
    +--------------+--------------+--------------+
-   | debian       | bullseye     | bullseye     |
+   | ubuntu       | noble        | noble        |
    +--------------+--------------+--------------+
-   | debian       | buster       | buster       |
+   | debian       | bookworm     | bookworm     |
+   +--------------+--------------+--------------+
+   | debian       | trixie       | trixie       |
    +--------------+--------------+--------------+
    | kali linux   | rolling      | kali-rolling |
    +--------------+--------------+--------------+
