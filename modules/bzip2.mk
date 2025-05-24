@@ -161,16 +161,16 @@ bzip2_stage_shlib_flags := \
 
 $(call gen_deps,stage-bzip2,stage-gcc)
 
-config_stage-bzip2     = $(call bzip2_config_cmds,stage-zlib)
-build_stage-bzip2      = $(call bzip2_build_cmds,stage-zlib,\
+config_stage-bzip2     = $(call bzip2_config_cmds,stage-bzip2)
+build_stage-bzip2      = $(call bzip2_build_cmds,stage-bzip2,\
                                                  $(stagedir),\
                                                  $(bzip2_stage_static_flags),\
                                                  $(bzip2_stage_shared_flags),\
                                                  $(bzip2_stage_shlib_flags))
-clean_stage-bzip2      = $(call bzip2_clean_cmds,stage-zlib)
-install_stage-bzip2    = $(call bzip2_install_cmds,stage-zlib,$(stagedir))
+clean_stage-bzip2      = $(call bzip2_clean_cmds,stage-bzip2)
+install_stage-bzip2    = $(call bzip2_install_cmds,stage-bzip2,$(stagedir))
 uninstall_stage-bzip2  = $(call bzip2_uninstall_cmds,$(stagedir))
-check_stage-bzip2      = $(call bzip2_check_cmds,stage-zlib)
+check_stage-bzip2      = $(call bzip2_check_cmds,stage-bzip2)
 
 $(call gen_config_rules_with_dep,stage-bzip2,bzip2,config_stage-bzip2)
 $(call gen_clobber_rules,stage-bzip2)
@@ -197,8 +197,8 @@ bzip2_final_shared_flags := \
 	AR='$(stage_ar)' \
 	RANLIB='$(stage_ranlib)' \
 	CC='$(stage_cc)' \
-	CFLAGS='$(final_cflags) $(bzip2_intern_cflags)' \
-	LDFLAGS='$(final_ldflags) $(bzip2_intern_cflags)' \
+	CFLAGS='$(final_cflags) -fPIC $(bzip2_intern_cflags)' \
+	LDFLAGS='$(final_ldflags) -fPIC $(bzip2_intern_cflags)' \
 	LD_LIBRARY_PATH='$(stage_lib_path)'
 
 bzip2_final_shlib_flags := \
@@ -210,18 +210,18 @@ bzip2_final_shlib_flags := \
 
 $(call gen_deps,final-bzip2,stage-gcc)
 
-config_final-bzip2     = $(call bzip2_config_cmds,final-zlib)
-build_final-bzip2      = $(call bzip2_build_cmds,final-zlib,\
+config_final-bzip2     = $(call bzip2_config_cmds,final-bzip2)
+build_final-bzip2      = $(call bzip2_build_cmds,final-bzip2,\
                                                  $(PREFIX),\
                                                  $(bzip2_final_static_flags),\
                                                  $(bzip2_final_shared_flags),\
                                                  $(bzip2_final_shlib_flags))
-clean_final-bzip2      = $(call bzip2_clean_cmds,final-zlib)
-install_final-bzip2    = $(call bzip2_install_cmds,final-zlib,\
+clean_final-bzip2      = $(call bzip2_clean_cmds,final-bzip2)
+install_final-bzip2    = $(call bzip2_install_cmds,final-bzip2,\
                                                    $(PREFIX),\
                                                    $(finaldir))
 uninstall_final-bzip2  = $(call bzip2_uninstall_cmds,$(PREFIX),$(finaldir))
-check_final-bzip2      = $(call bzip2_check_cmds,final-zlib)
+check_final-bzip2      = $(call bzip2_check_cmds,final-bzip2)
 
 $(call gen_config_rules_with_dep,final-bzip2,bzip2,config_final-bzip2)
 $(call gen_clobber_rules,final-bzip2)

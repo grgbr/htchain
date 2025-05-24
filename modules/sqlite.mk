@@ -96,13 +96,11 @@ define sqlite_check_cmds
 endef
 
 sqlite_common_config_args = \
-	--enable-releasemode \
 	--enable-shared \
 	--enable-static \
-	--enable-readline \
 	--enable-all \
 	--enable-update-limit \
-	--enable-tempstore=yes \
+	--with-tempstore \
 	--enable-memsys5 \
 	--with-tcl="$(builddir)/stage-tcl" \
 	ac_cv_search_tgetent="-ltinfo"

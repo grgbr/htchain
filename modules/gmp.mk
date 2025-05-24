@@ -171,7 +171,8 @@ $(call gen_dir_rules,stage-gmp)
 gmp_final_config_args := $(gmp_common_args) \
                          --enable-shared \
                          --with-gnu-ld \
-                         $(final_config_flags)
+                         $(final_config_flags) \
+                         LD_LIBRARY_PATH='$(stage_lib_path)'
 
 $(call gen_deps,final-gmp,stage-gcc stage-m4 stage-flex stage-chrpath)
 

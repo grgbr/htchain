@@ -20,7 +20,7 @@ define tcl_patches
 endef
 
 # List of packages to build shipped with TCL.
-tcl_packages  := itcl4.2.2 tdbc1.1.3 thread2.8.7 tdbcsqlite3-1.1.3
+tcl_packages  := itcl4.3.2 tdbc1.1.10 thread3.0.1 tdbcsqlite3-1.1.10
 
 define tcl_desc
 Tcl is a powerful, easy to use, embeddable, cross-platform interpreted scripting
@@ -181,7 +181,10 @@ tcl_common_args := --enable-threads \
                    --enable-shared \
                    --disable-symbols \
                    --enable-man-symlinks \
-                   --with-gdbm="$(stagedir)" \
+                   --with-gdbm="yes" \
+		   gincdir=$(stagedir)/include" \
+		   glibdir=$(stagedir)/lib" \
+		   ac_cv_c_gdbm=yes \
                    ac_cv_func_sin=no \
                    $(if $(mach_is_64bits),--enable-64bit)
 

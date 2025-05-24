@@ -1,0 +1,75 @@
+################################################################################
+# python env module
+################################################################################
+
+define python-env-requirements
+pwn
+endef
+
+define python-env_desc
+Python env
+endef
+
+$(call gen_dir_rules,python-env)
+
+.PHONY: fetch-python-env
+fetch-python-env: $(stampdir)/python-env/fetch
+$(stampdir)/python-env/fetch: $(builddir)/python-env/requirements.txt | $(FETCHDIR) $(stampdir)/python-env
+	$(call log,python-env,fetching)
+	pip download \
+		$(if $(V),,-q --no-input) \
+		--dest $(FETCHDIR) \
+		--no-cache-dir \
+		--no-binary=:all: \
+		--isolated \
+		--requirement $(<)
+	#@touch $(@)
+
+$(builddir)/python-env/requirements.txt: | $(builddir)/python-env
+	$(Q)$(ECHOE) "$(subst $(newline),\n,$(python-env-requirements))" > $(@)
+
+fetch: fetch-python-env
+
+
+################################################################################
+# Staging definitions
+################################################################################
+$(stampdir)/stage-python-env/configured: $(builddir)/python-env/requirements.txt | $(stampdir)/stage-python-env
+	@touch $(@)
+
+define build_stage-python-env
+pip wheel \
+	$(if $(V),-v,-q --no-input) \
+	--wheel-dir $(builddir)/stage-python-env \
+	--find-links $(FETCHDIR) \
+	--no-cache-dir \
+	--no-index \
+	--isolated \
+	--requirement $(builddir)/python-env/requirements.txt
+endef
+
+define install_stage-python-env
+pip install \
+	$(if $(V),-v,-q --no-input) \
+	--find-links $(builddir)/stage-python-env \
+	--no-cache-dir \
+	--no-index \
+	--isolated \
+	--root "$(stagedir)" \
+	--prefix "$(PREFIX)" \
+	--ignore-installed \
+	--force-reinstall \
+	--requirement $(builddir)/python-env/requirements.txt
+endef
+
+$(call gen_deps,stage-python-env,)
+$(call gen_clobber_rules,stage-python-env)
+$(call gen_build_rules,stage-python-env,build_stage-python-env)
+$(call gen_install_rules,stage-python-env,install_stage-python-env)
+$(call gen_uninstall_rules,stage-python-env)
+$(call gen_dir_rules,stage-python-env)
+
+################################################################################
+# Final definitions
+################################################################################
+
